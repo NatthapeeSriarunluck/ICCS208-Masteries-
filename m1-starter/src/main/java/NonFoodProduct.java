@@ -5,7 +5,7 @@ public class NonFoodProduct implements Sellable {
     double TaxRate;
     public NonFoodProduct(String barCode, double price, double taxRate) {
         this.Barcode = barCode;
-        this.Price = (price * taxRate) + price;
+        this.Price = price;
         this.TaxRate = taxRate;
     }
 
@@ -16,6 +16,6 @@ public class NonFoodProduct implements Sellable {
 
     @Override
     public double getAfterTaxPrice() {
-        return this.Price;
+        return (1.0 + TaxRate) * Price;
     }
 }

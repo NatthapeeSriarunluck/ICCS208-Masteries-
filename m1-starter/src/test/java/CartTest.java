@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CartTest {
 
-    /* UNCOMMENT ME TO ACTIVATE
-
     @Test
     void addItem() {
         Store s = createStore();
@@ -67,6 +65,6 @@ class CartTest {
         s.addSellable(recyclablePlate);
         return s;
     }
-    */
+
 
 }

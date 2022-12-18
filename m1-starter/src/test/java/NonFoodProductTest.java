@@ -17,5 +17,4 @@ class NonFoodProductTest {
         NonFoodProduct item1 = new NonFoodProduct("123", price, tax);
         assertEquals(price * (1 + tax), item1.getAfterTaxPrice(), 1e-4);
     }
-
 }

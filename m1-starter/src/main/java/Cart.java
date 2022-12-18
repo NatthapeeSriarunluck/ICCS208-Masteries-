@@ -1,38 +1,39 @@
-
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Cart {
-    Store cart;
+    ArrayList<Sellable> cart;
+    Store market;
 
     public Cart(Store store) {
-        cart = store;
+        cart = new ArrayList<>();
+        market = store;
     }
 
     public void addItem(String barcode) {
-        Sellable p = cart.findSellableByBarcode(barcode);
-        cart.addSellable(p);
-
+        try {
+            Sellable p = market.findSellableByBarcode(barcode);
+            cart.add(p);
+        } catch (ItemNotExistException e) {
+            return;
+        }
     }
 
     public double getTotal() {
-        for (int i = 0; i < cart.getSize(); i++) {
+        double total = 0.0;
+        for (Sellable product : cart) {
+            total += product.getAfterTaxPrice();
         }
-        return 2;
+        return total;
     }
 
     public int getItemCount() {
-        int size = 0;
-        for (int i = 0; i < cart.getSize(); i++) {
-
-        }
-        return size;
+        return cart.size();
     }
 
     public int getUniqueItemCount() {
-        int size = 0;
-        for (int i = 0; i < cart.getSize(); i++) {
-
-        }
-        return 0;
+        HashSet<Sellable> cartSet = new HashSet<>(cart);
+        return cartSet.size();
     }
-
 }
+
